@@ -1,6 +1,7 @@
+require('dotenv').config();
 const jwt = require("jsonwebtoken");
 
-const AK_SIGN="AKS";
+const AK_SIGN = process.env.JWT_SECRET;
 
 const generateToken = ({ _id, type }) => {
     const token = jwt.sign({ _id, type}, AK_SIGN); 

@@ -1,18 +1,12 @@
-const {connect} = require("mongoose");
+require('dotenv').config();
+const { connect } = require("mongoose");
 
-const MONGO_DB_URL = "mongodb+srv://ankitrox5813:ankit123@mern.ubcchet.mongodb.net";
+const MONGO_DB_URL = process.env.MONGO_DB_URL;
+const DB_NAME = "your_db_name"; // Use your actual DB name
 
-const DB_NAME = "libraryapp";
-
-const connectDB = async()=>{
-    try{
-        await connect(`${MONGO_DB_URL}/${DB_NAME}`);
-        console.log(`Mongo Connection Successful...`);
-    }catch(err){
-        console.error(err);
-    }
+const connectDB = async () => {
+  await connect(`${MONGO_DB_URL}/${DB_NAME}`);
+  console.log(`Mongo Connection Successful...`);
 };
 
-connectDB();
-
-module.exports={};
+module.exports = connectDB;
